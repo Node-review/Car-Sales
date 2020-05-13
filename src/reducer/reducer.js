@@ -20,6 +20,8 @@ export const reducer = (state = initialState, action) => {
     case 'ADD_FEATURES':
       const added = state.additionalFeatures.find(feature =>
         feature.id === action.payload.id)
+      const addedFeatures = state.additionalFeatures.filter(feature =>
+        feature.id !== action.payload.id)
       return {
         ...state,
         additionalPrice: state.additionalPrice + added.price,
@@ -29,14 +31,15 @@ export const reducer = (state = initialState, action) => {
             ...state.car.features,
             action.payload
           ]
-        }
+        },
+        additionalFeatures: [...addedFeatures],
       }
 
     case 'REMOVE_FEATURES':
       const removed = state.car.features.find(feature =>
         feature.id === action.payload.id)
 
-      const saved = state.car.features.filter(feature =>
+      const removedFeatures = state.car.features.filter(feature =>
         feature.id !== action.payload.id)
 
       return {
@@ -45,9 +48,10 @@ export const reducer = (state = initialState, action) => {
         car: {
           ...state.car,
           features: [
-            ...saved
+            ...removedFeatures
           ]
-        }
+        },
+        additionalFeatures: [...state.additionalFeatures, action.payload]
       }
 
     default:

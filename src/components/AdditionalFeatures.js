@@ -5,7 +5,6 @@ import { addFeatures } from './actions/action';
 import AdditionalFeature from './AdditionalFeature';
 
 const AdditionalFeatures = props => {
-  console.log(props.features)
 
   return (
     <div className="content">
@@ -16,7 +15,7 @@ const AdditionalFeatures = props => {
             <AdditionalFeature
               key={item.id}
               feature={item}
-              addFeatures={props.addFeatures}
+            // addFeatures={props.addFeatures}
             />
           ))}
         </ol>
