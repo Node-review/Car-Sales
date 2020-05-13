@@ -15,7 +15,6 @@ const AdditionalFeatures = props => {
             <AdditionalFeature
               key={item.id}
               feature={item}
-            // addFeatures={props.addFeatures}
             />
           ))}
         </ol>
@@ -28,7 +27,7 @@ const AdditionalFeatures = props => {
 
 const mapPropsToState = state => {
   return {
-    features: state.car.features,
+    additionalFeatures: state.additionalFeatures
   }
 }
 
